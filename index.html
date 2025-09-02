@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17th Monthsary</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #c5b4e3;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            overflow: hidden; /* para di lumagpas yung hearts */
+            position: relative;
+        }
+
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: blue;
+            transform: rotate(45deg);
+            animation: fall 6s linear infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: blue;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -10px;
+            top: 0;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10%) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            text-align: center;
+            background: #fdf6ec;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+            max-width: 620px;
+            width: 90%;
+            margin: 20px;
+            position: relative;
+            z-index: 1; /* para laging nasa ibabaw ng hearts */
+        }
+		
+		h1 {
+			font-family: "Abril Fatface", serif;
+			font-size: 30px;
+			color: #444;
+		}
+		
+		.your-text {
+			font-size: 15px; /* mas maliit, aesthetic */
+			margin-bottom: 35px;
+			color: #444;
+			font-family: 'Quicksand', Arial, sans-serif;
+			line-height: 1.8; /* para mas airy */
+			letter-spacing: 0.5px; /* dagdag elegance */
+			text-align: center; /* para balanced sa container */
+		}
+
+
+        .photo {
+            width: 100%;
+            height: auto;
+            max-width: 500px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .photo:hover {
+            transform: scale(1.05);
+        }
+
+        .next-button {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 18px;
+            color: #fff;
+            background: #c5b4e3;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0px 5px 15px rgba(128, 0, 128, 1);
+        }
+
+        .next-button:hover {
+            background: purple;
+            transform: scale(1.05);
+            box-shadow: 0px 5px 15px rgba(128, 0, 128, 1);
+        }
+    </style>
+</head>
+<body>
+    <!-- falling hearts background -->
+    <div class="hearts"></div>
+
+    <div class="container">
+		<h1>Happy 17th Monthsary!<h1>
+		<p class="your-text">Here we go again with the virtual gift, I hope that you'll like it even it it's simple gift <br><i>I love you so much, fighting!<i> 
+		</p>
+        <img src="C:\Users\windows\Documents\Files\for HER\site\2025\17th\image-removebg-preview (7) (1).png" alt="Foto" class="photo">
+        <a href="https://www.canva.com/design/DAGxsJXAywg/IwPqQfbZJbh6NEDoElh93w/edit?utm_content=DAGxsJXAywg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="next-button">Click Me</a>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const heartsContainer = document.querySelector('.hearts');
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (3 + Math.random() * 5) + 's';
+            heart.style.opacity = Math.random();
+            heart.style.transform = `scale(${0.5 + Math.random()}) rotate(45deg)`;
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
